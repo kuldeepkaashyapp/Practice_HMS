@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="
+           http://www.springframework.org/schema/beans
+           https://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/util
+           https://www.springframework.org/schema/util/spring-util.xsd">
+
+    <import resource="standalone-beans.xml"/>
+
+
+    <bean name="dataBase" class="com.spring.practice.hsmlearningspring.database.DataBaseBean">
+
+        <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/hospitaldb"/>
+
+    </bean>
+
+    <bean name="hospital" class="com.spring.practice.hsmlearningspring.Hospital.Hospital">
+        <property name="hospitalName" value="Kashyao Life Care"/>
+        <property name="patient" ref="Patient"/>
+        <property name="hospitalAddress" ref="addressHospital"/>
+
+    </bean>
+
+
+
+    <bean name="addressHospital" class="com.spring.practice.hsmlearningspring.patient.Address">
+        <property name="city" value="Akbarpur"/>
+        <property name="pincode" value="209101"/>
+        <property name="state" value="UttarPradesh"/>
+        <property name="street" value="Rura Road"/>
+
+    </bean>
+
+
+
+    <bean name="phamarcy" class="com.spring.practice.hsmlearningspring.pharmacy.Pharmacy">
+        <property name="stock" ref="stockMap"/>
+        <property name="department" ref="departmentSet"/>
+        <property name="pharmacies" ref="medicineList"/>
+
+    </bean>
+
+
+    <!--doctor Bean-->
+
+    <bean name="doctor" class="com.spring.practice.hsmlearningspring.doctor.Doctor">
+
+        <property name="doctorId" value="10001"/>
+        <property name="doctorPhone" value="7869845683"/>
+        <property name="doctorName" value="Dr. Sanjana Yadav"/>
+        <property name="doctorAddress" value="Kanpur"/>
+        <property name="specialty" value="Cardiology"/>
+        <property name="pharmacy" ref="phamarcy"/>
+
+
+    </bean>
+
+
+    <bean name="AdressPatient" class="com.spring.practice.hsmlearningspring.patient.Address">
+        <property name="city" value="Kanpur"/>
+        <property name="pincode" value="209101"/>
+        <property name="state" value="UttarPradesh"/>
+        <property name="street" value="mallroad"/>
+
+    </bean>
+
+    <bean name="Patient" class="com.spring.practice.hsmlearningspring.patient.Patient">
+        <property name="patientId" value="1001"/>
+        <property name="patientName" value="Kuldeep Kuamr Kashyap"/>
+        <property name="patientGender" value="Male"/>
+        <property name="age" value="21"/>
+        <property name="pharmacy" ref="phamarcy"/>
+        <property name="doctor" ref="doctor" />
+        <property name="address" ref="AdressPatient"/>
+    </bean>
+
+
+</beans>
