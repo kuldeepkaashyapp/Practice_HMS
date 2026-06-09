@@ -70,7 +70,7 @@ public class HsmLearningSpringApplication {
         // PATIENT
 
 
-        System.out.println("\n===== PATIENT DETAILS =====");
+        System.out.println("\n===== PATIENT DETAILS ===");
 
         Patient patient =
                 context.getBean("Patient", Patient.class);
